@@ -1,0 +1,256 @@
+  <!-- ##### Header Area End ##### -->
+  <div>
+    <!-- ##### Hero Area Start ##### -->
+    <section class="hero-area">
+        <div class="hero-post-slides">
+
+            <!-- Single Hero Post -->
+            <div class="single-hero-post bg-overlay">
+                <!-- Post Image -->
+                <div class="slide-img bg-img" style="background-image: url(assets/img/bg-img/1.jpg);"></div>
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <!-- Post Content -->
+                            <div class="hero-slides-content text-center">
+                                <h2>Ornamental plants enhance spaces with natural beauty and tranquility</h2>
+                                <p>Ornamental plants are vibrant botanical symbols that create focal points in spaces. They bring a touch of nature, inducing relaxation and lively ambiance.</p>
+                                <div class="welcome-btn-group">
+                                    <a [routerLink]="['/shop']" class="btn alazea-btn mr-30">GET STARTED</a>
+                                    <a [routerLink]="['/contact']" class="btn alazea-btn active">CONTACT US</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Hero Post -->
+        </div>
+    </section>
+
+    <section class="new-arrivals-products-area bg-gray section-padding-100" style="background-color: #fff;">
+      <div class="container" >
+          <div class="row">
+              <div class="col-12">
+                  <!-- Section Heading -->
+                  <div class="section-heading text-center">
+                      <h2> PRODUCT PORTFOLIO</h2>
+                      <p>Explore Our Comprehensive Product Portfolio for a Wide Array of Options</p>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-12">
+                <div class="alazea-portfolio-filter">
+                    <div class="portfolio-filter">
+                      <!-- // thực hiện vòng lặp để hiện ra thành phần của cha ở đây -->
+                        <button class="btn active" data-filter="*">
+                          <option value="0" (click)="selectCategory(0)">All</option>
+                          </button>
+                        <ng-container *ngIf="categoryFather != null">
+                          <button class="btn" data-filter=".design" *ngFor="let cate of categoryFather">
+                            <option value="{{cate.id}}" (click)="selectCategory(cate.id)"> {{cate.categoryName}}</option>
+                        </button>
+                        </ng-container>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row alazea-portfolio">
+         <!-- thực hiện vòng lặp hiện ra các thành phần con ra ở đây -->
+         <ng-container *ngIf="categorySon != null">
+            <!-- Single Portfolio Area -->
+            <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item design home-design" *ngFor="let cate of categorySon">
+                <!-- Portfolio Thumbnail -->
+                <div class="portfolio-thumbnail bg-img" style="background-image: url(assets/img/bg-img/7.jpg);"></div>
+                <!-- Portfolio Hover Text -->
+                <div class="portfolio-hover-overlay">
+                    <a [routerLink]="['/shop']" class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 1">
+                        <div class="port-hover-text">
+                            <h3>{{cate.categoryName}}</h3>
+                            <h5> &#8594; See More </h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+          </ng-container>
+
+        </div>
+      </div>
+      </section>
+
+      <section class="new-arrivals-products-area bg-gray section-padding-100">
+        <div class="container" >
+            <div class="row">
+                <div class="col-12">
+                    <!-- Section Heading -->
+                    <div class="section-heading text-center">
+                        <h2>BEST SELLERS</h2>
+                        <p>We have the latest products, it must be exciting for you</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+              <ng-container *ngIf="productBestSeller != null">
+     <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-lg-3" *ngFor="let pro of productBestSeller">
+                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Product Image -->
+                        <div class="product-img">
+                            <a [routerLink]="['/shop/shopdetail',{id: pro.id, categoryId: pro.categoryId}]"><img src="assets/img/bg-img/10.jpg" alt=""></a>
+                            <!-- Product Tag -->
+                            <div class="product-tag">
+                                <a href="#">Hot</a>
+                            </div>
+                            <div class="product-meta d-flex">
+                                <a class="wishlist-btn" (click)="addFavoriteCard(pro.id,pro.sellPrice)"><i class="icon_heart_alt"></i></a>
+                                <a style="cursor: pointer;" class="add-to-cart-btn" (click)="addNewProductToCart(pro.id,pro.sellPrice)">Add to cart</a>
+                                <a [routerLink]="['/shop/shopdetail',{id: pro.id, categoryId: pro.categoryId}]" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                            </div>
+                        </div>
+                        <!-- Product Info -->
+                        <div class="product-info mt-15 text-center">
+                            <a href="shop-details.html">
+                              <p>{{pro.productName}}</p>
+                            </a>
+                            <h6>{{pro.sellPrice}} $</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Product Area -->
+              </ng-container>
+
+                <div class="col-12 text-center">
+                    <a [routerLink]="['/shop']" class="btn alazea-btn">View All</a>
+                </div>
+
+            </div>
+        </div>
+      </section>
+
+  </div>
+  <section class="our-services-area bg-gray section-padding-100-0" style="background-color: #fff;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Section Heading -->
+                <div class="section-heading text-center">
+                    <h2>OUR SERVICES</h2>
+                    <p>Our services cater to your needs, offering an ideal solution for you.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-between">
+            <div class="col-12 col-lg-5">
+                <div class="alazea-service-area mb-100">
+
+                    <!-- Single Service Area -->
+                    <div class="single-service-area d-flex align-items-center wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Icon -->
+                        <div class="service-icon mr-30">
+                            <img src="assets/img/core-img/s1.png" alt="">
+                        </div>
+                        <!-- Content -->
+                        <div class="service-content">
+                            <h5>Plants Care</h5>
+                            <p>Within Aenean, where excellence prevails, we offer top-tier service and unmatched satisfaction.</p>
+                        </div>
+                    </div>
+
+                    <!-- Single Service Area -->
+                    <div class="single-service-area d-flex align-items-center wow fadeInUp" data-wow-delay="300ms">
+                        <!-- Icon -->
+                        <div class="service-icon mr-30">
+                            <img src="assets/img/core-img/s2.png" alt="">
+                        </div>
+                        <!-- Content -->
+                        <div class="service-content">
+                            <h5>Pressure Washing</h5>
+                            <p>With AKT4, we deliver impeccable service, ensuring your utmost satisfaction.</p>
+                        </div>
+                    </div>
+
+                    <!-- Single Service Area -->
+                    <div class="single-service-area d-flex align-items-center wow fadeInUp" data-wow-delay="500ms">
+                        <!-- Icon -->
+                        <div class="service-icon mr-30">
+                            <img src="assets/img/core-img/s3.png" alt="">
+                        </div>
+                        <!-- Content -->
+                        <div class="service-content">
+                            <h5>Tree Service &amp; Trimming</h5>
+                            <p>Amidst AKT4 purity, our exceptional services exceed expectations, setting a new standard.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="alazea-video-area bg-overlay mb-100">
+                    <img src="assets/img/bg-img/23.jpg" alt="">
+                    <a href="http://www.youtube.com/watch?v=7HKoqNJtMTQ" class="video-icon">
+                        <i class="fa fa-play" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <section class="new-arrivals-products-area bg-gray section-padding-100">
+      <div class="container" >
+          <div class="row">
+              <div class="col-12">
+                  <!-- Section Heading -->
+                  <div class="section-heading text-center">
+                      <h2>NEW ARRIVALS</h2>
+                      <p>We have the latest products, it must be exciting for you</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+            <!-- // hien thị 8 sản phẩm mới nhất  -->
+            <ng-container *ngIf="productNew != null">
+     <!-- Single Product Area -->
+              <div class="col-12 col-sm-6 col-lg-3" *ngFor="let pro of productNew">
+                  <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
+                      <!-- Product Image -->
+                      <div class="product-img">
+                          <a [routerLink]="['/shop/shopdetail',{id: pro.id, categoryId: pro.categoryId}]"><img src="assets/img/bg-img/9.jpg" alt=""></a>
+                          <!-- Product Tag -->
+                          <!-- <div class="product-tag">
+                              <a href="#">Hot</a>
+                          </div> -->
+                          <div class="product-meta d-flex">
+                              <a class="wishlist-btn" (click)="addFavoriteCard(pro.id,pro.sellPrice)"><i class="icon_heart_alt"></i></a>
+                              <a class="add-to-cart-btn" (click)="addNewProductToCart(pro.id,pro.sellPrice)" style="cursor: pointer;">Add to cart</a>
+                              <a [routerLink]="['/shop/shopdetail',{id: pro.id, categoryId: pro.categoryId}]" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                          </div>
+                      </div>
+                      <!-- Product Info -->
+                      <div class="product-info mt-15 text-center">
+                          <a href="shop-details.html">
+                              <p>{{pro.productName}}</p>
+                              <p>{{pro.categoryId}}</p>
+                          </a>
+                          <h6>{{pro.sellPrice}} $</h6>
+                      </div>
+                  </div>
+              </div>
+            </ng-container>
+              <div class="col-12 text-center">
+                  <a [routerLink]="['/shop']" class="btn alazea-btn">View All</a>
+              </div>
+
+          </div>
+      </div>
+      </section>

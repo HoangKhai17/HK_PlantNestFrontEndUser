@@ -1,0 +1,181 @@
+
+
+
+   <!-- ##### Breadcrumb Area Start ##### -->
+<div class="breadcrumb-area">
+    <!-- Top Breadcrumb Area -->
+    <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(assets/img/bg-img/24.jpg);">
+        <h2>Shop</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="['/']"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+<!-- ##### Shop Area Start ##### -->
+<section class="shop-page section-padding-0-100">
+    <div class="container">
+        <div class="row">
+            <!-- Shop Sorting Data -->
+            <div class="col-12">
+                <div class="shop-sorting-data d-flex flex-wrap align-items-center justify-content-between">
+                    <!-- Shop Page Count -->
+                    <div class="shop-page-count">
+                        <p>Showing 1–9 of total results</p>
+                    </div>
+                    <!-- Search by Terms -->
+                    <div class="search_by_terms">
+                        <form action="#" method="post" class="form-inline">
+                            <select class="custom-select widget-title">
+                              <option selected>Short by Popularity</option>
+                              <option value="1">Short by Newest</option>
+                              <option value="2">Short by Sales</option>
+                              <option value="3">Short by Ratings</option>
+                            </select>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Area -->
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="shop-sidebar-area">
+                    <!-- Shop Widget -->
+                    <div class="shop-widget catagory mb-50">
+                        <h4 class="widget-title">Categories</h4>
+                        <div class="widget-desc">
+                          <!-- // thực hiện vòng lặp categories ở đây -->
+                            <!-- Single Checkbox -->
+                            <div class="custom-control d-flex align-items-center mb-2">
+                              <label class="custom-label" (click)="selectByCateogryId(0)" style="color:#707070;font-size: 16px;margin: 6px 0px 0px;text-align: left;">All plants</label>
+                            </div>
+                            <!-- Single Checkbox -->
+                            <ng-container *ngIf="categorySon != null">
+                              <div class="custom-control custom-checkbox d-flex align-items-center mb-2" *ngFor="let cate of categorySon">
+                                <label class="custom-label"  style="color:#707070;font-size: 16px;margin: 6px 0px 0px;text-align: left;" (click)="selectByCateogryId(cate.id)">&#8250; {{cate.categoryName}}</label>
+                              </div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                    <!-- Shop Widget -->
+                    <div class="shop-widget sort-by mb-50">
+                        <h4 class="widget-title">Sort by</h4>
+                        <div class="widget-desc">
+                            <!-- Single Checkbox -->
+                            <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
+                              <label class="custom-label"  style="color:#707070;font-size: 16px;margin: 6px 0px 0px;text-align: left;" (click)="selectByNew()">&#8250; New arrivals </label>
+                            </div>
+
+                            <!-- Single Checkbox -->
+                            <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
+                              <label class="custom-label"  style="color:#707070;font-size: 16px;margin: 6px 0px 0px;text-align: left;" (click)="selectByAZ()">&#8250; Alphabetically, A-Z </label>
+                            </div>
+                            <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
+                              <label class="custom-label"  style="color:#707070;font-size: 16px;margin: 6px 0px 0px;text-align: left;" (click)="selectByZA()">&#8250; Alphabetically, Z-A </label>
+                            </div>
+                            <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
+                              <label class="custom-label"  style="color:#707070;font-size: 16px;margin: 6px 0px 0px;text-align: left;" (click)="selectByAsc()">&#8250; Price: low to high </label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
+                              <label class="custom-label"  style="color:#707070;font-size: 16px;margin: 6px 0px 0px;text-align: left;" (click)="selectByDesc()">&#8250; Price:high to low </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Shop Widget -->
+                    <div class="shop-widget best-seller mb-50">
+                        <h4 class="widget-title">Best Seller</h4>
+                        <div class="widget-desc">
+                           <!-- thực hiện vòng lặp hiện ra 4 sản phẩm bán nhiều nhất ở đây -->
+                           <ng-container *ngIf="productBestSeller != null">
+                            <!-- Single Best Seller Products -->
+                            <div class="single-best-seller-product d-flex align-items-center" *ngFor="let pro of productBestSeller">
+                                <div class="product-thumbnail">
+                                    <a [routerLink]="['/shop/shopdetail',{id: pro.id, categoryId: pro.categoryId}]"><img src="assets/img/bg-img/4.jpg" alt=""></a>
+                                </div>
+                                <div class="product-info">
+                                    <a href="shop-details.html">{{pro.productName}}</a>
+                                    <p>{{pro.sellPrice}} $</p>
+                                    <div class="ratings">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                           </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--thực hiện vòng lặp sản phẩm-->
+            <!-- All Products Area -->
+            <div class="col-12 col-md-8 col-lg-9">
+                <div class="shop-products-area">
+                    <div class="row">
+                      <ng-container *ngIf="product != null">
+                        <div class="col-12 col-sm-6 col-lg-4" *ngFor="let pro of product let i = index">
+                          <ng-container *ngIf="i >= page *9-9 && i<page*9">
+                            <div class="single-product-area mb-50">
+                                <!-- Product Image -->
+                                <div class="product-img">
+                                    <a [routerLink]="['/shop/shopdetail',{id: pro.id, categoryId: pro.categoryId}]"><img src="assets/img/bg-img/42.png" alt=""></a>
+                                    <div class="product-meta d-flex">
+                                        <a  class="wishlist-btn"  (click)="addFavoriteCard(pro.id,pro.sellPrice)"><i class="icon_heart_alt"></i></a>
+                                        <a  class="add-to-cart-btn" (click)="addNewProductToCart(pro.id,pro.sellPrice)">Add to cart</a>
+                                        <a  class="compare-btn" [routerLink]="['/shop/shopdetail',{id: pro.id, categoryId: pro.categoryId}]"><i class="arrow_left-right_alt"></i></a>
+                                    </div>
+                                </div>
+                                <!-- Product Info -->
+                                <div class="product-info mt-15 text-center">
+                                    <a href="shop-details.html">
+                                        <p>{{pro.productName}}</p>
+                                    </a>
+                                    <h6>{{pro.sellPrice}}$</h6>
+                                </div>
+                            </div>
+                          </ng-container>
+                        </div>
+
+                      </ng-container>
+
+                    </div>
+
+                    <!-- dùng để phân trang ở đây -->
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" (click)="previousPage()"><i class="fa fa-angle-left"></i></a></li>
+                            <li class="page-item"><a class="page-link" >{{page}}</a></li>
+                            <li class="page-item"><a class="page-link" (click)="nextPage()"><i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
